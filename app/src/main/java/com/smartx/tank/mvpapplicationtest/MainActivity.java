@@ -10,6 +10,9 @@ import com.smartx.tank.mvpapplicationtest.decorate.IEquip;
 import com.smartx.tank.mvpapplicationtest.decorate.RedJewelryEquip;
 import com.smartx.tank.mvpapplicationtest.decorate.ShoeEquip;
 import com.smartx.tank.mvpapplicationtest.decorate.YellowJewelryEquip;
+import com.smartx.tank.mvpapplicationtest.factory.abstractfactory.JiangSuRouJiaMoFactory;
+import com.smartx.tank.mvpapplicationtest.factory.officalfactory.JiangSuRouJiaMoStore;
+import com.smartx.tank.mvpapplicationtest.factory.simplefactory.RouJiaMoStore;
 import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
@@ -41,12 +44,19 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
-        //镶嵌一颗红宝石，一颗蓝宝石，一颗黄宝石的武器
-        IEquip equip = new RedJewelryEquip(new BlueJewelryEquip(new YellowJewelryEquip(new ArmEquip())));
-        String description = equip.description();
-        int attack = equip.calculateAttack();
-        Logger.d("攻击力-->"+attack);
-        Logger.d("描述-->"+description);
+        new JiangSuRouJiaMoFactory().createRouJiaMo();
+//        JiangSuRouJiaMoStore jiangSuRouJiaMoStore = new JiangSuRouJiaMoStore();
+//        jiangSuRouJiaMoStore.sellRouJiaMo("la");
+
+//        RouJiaMoStore rouJiaMoStore = new RouJiaMoStore();
+//        rouJiaMoStore.sellRouJiaMo("jiangsu");
+
+//        //镶嵌一颗红宝石，一颗蓝宝石，一颗黄宝石的武器
+//        IEquip equip = new RedJewelryEquip(new BlueJewelryEquip(new YellowJewelryEquip(new ArmEquip())));
+//        String description = equip.description();
+//        int attack = equip.calculateAttack();
+//        Logger.d("攻击力-->"+attack);
+//        Logger.d("描述-->"+description);
 
 //        SubjectAInJava subjectAInJava = new SubjectAInJava();
 //        SubjectBInJava subjectBInJava = new SubjectBInJava();
