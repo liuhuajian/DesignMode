@@ -4,6 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.smartx.tank.mvpapplicationtest.decorate.ArmEquip;
+import com.smartx.tank.mvpapplicationtest.decorate.BlueJewelryEquip;
+import com.smartx.tank.mvpapplicationtest.decorate.IEquip;
+import com.smartx.tank.mvpapplicationtest.decorate.RedJewelryEquip;
+import com.smartx.tank.mvpapplicationtest.decorate.ShoeEquip;
+import com.smartx.tank.mvpapplicationtest.decorate.YellowJewelryEquip;
 import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
@@ -35,11 +41,18 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
-        SubjectAInJava subjectAInJava = new SubjectAInJava();
-        SubjectBInJava subjectBInJava = new SubjectBInJava();
+        //镶嵌一颗红宝石，一颗蓝宝石，一颗黄宝石的武器
+        IEquip equip = new RedJewelryEquip(new BlueJewelryEquip(new YellowJewelryEquip(new ArmEquip())));
+        String description = equip.description();
+        int attack = equip.calculateAttack();
+        Logger.d("攻击力-->"+attack);
+        Logger.d("描述-->"+description);
 
-        ObserverInJava observerInJava = new ObserverInJava(subjectBInJava);
-        subjectBInJava.sendMsg("我最帅了哈哈哈");
+//        SubjectAInJava subjectAInJava = new SubjectAInJava();
+//        SubjectBInJava subjectBInJava = new SubjectBInJava();
+//
+//        ObserverInJava observerInJava = new ObserverInJava(subjectBInJava);
+//        subjectBInJava.sendMsg("我最帅了哈哈哈");
 
 //        HuaLi huaLi = new HuaLi();
 //        ObserverA observerA = new ObserverA(huaLi);
