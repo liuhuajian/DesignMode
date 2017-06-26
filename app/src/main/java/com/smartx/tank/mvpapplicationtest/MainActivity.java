@@ -35,6 +35,10 @@ import com.smartx.tank.mvpapplicationtest.single.EnumSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HoldSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HungrySingleType;
 import com.smartx.tank.mvpapplicationtest.single.LazySingleType;
+import com.smartx.tank.mvpapplicationtest.template.HRWorker;
+import com.smartx.tank.mvpapplicationtest.template.ITWorker;
+import com.smartx.tank.mvpapplicationtest.template.ProjectManWorker;
+import com.smartx.tank.mvpapplicationtest.template.Worker;
 
 import java.util.Random;
 
@@ -65,13 +69,22 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
+        //模板方法模式
+        Worker ITWorker = new ITWorker("liuhuajian");
+        ITWorker.workOneDay();
+        Worker hrWorker = new HRWorker("小婊砸");
+        hrWorker.workOneDay();
+        Worker proManWorker = new ProjectManWorker("tangor");
+        proManWorker.workOneDay();
+
+
         //外观模式
-        com.smartx.tank.mvpapplicationtest.appearance.Computer computer = new com.smartx.tank.mvpapplicationtest.appearance.Computer();
-        com.smartx.tank.mvpapplicationtest.appearance.Light light = new com.smartx.tank.mvpapplicationtest.appearance.Light();
-        com.smartx.tank.mvpapplicationtest.appearance.Door door = new com.smartx.tank.mvpapplicationtest.appearance.Door();
-        OneKeyControl oneKeyControl = new OneKeyControl(computer,door,light);
-        oneKeyControl.openAll();
-        oneKeyControl.closeAll();
+//        com.smartx.tank.mvpapplicationtest.appearance.Computer computer = new com.smartx.tank.mvpapplicationtest.appearance.Computer();
+//        com.smartx.tank.mvpapplicationtest.appearance.Light light = new com.smartx.tank.mvpapplicationtest.appearance.Light();
+//        com.smartx.tank.mvpapplicationtest.appearance.Door door = new com.smartx.tank.mvpapplicationtest.appearance.Door();
+//        OneKeyControl oneKeyControl = new OneKeyControl(computer,door,light);
+//        oneKeyControl.openAll();
+//        oneKeyControl.closeAll();
 
 
         //适配器模式
