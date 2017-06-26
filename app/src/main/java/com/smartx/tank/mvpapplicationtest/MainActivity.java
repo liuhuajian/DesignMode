@@ -4,6 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.smartx.tank.mvpapplicationtest.command.Computer;
+import com.smartx.tank.mvpapplicationtest.command.ComputerCloseCommand;
+import com.smartx.tank.mvpapplicationtest.command.ComputerOpenCommand;
+import com.smartx.tank.mvpapplicationtest.command.ControlPanel;
+import com.smartx.tank.mvpapplicationtest.command.Door;
+import com.smartx.tank.mvpapplicationtest.command.DoorCloseCommand;
+import com.smartx.tank.mvpapplicationtest.command.DoorOpenCommand;
+import com.smartx.tank.mvpapplicationtest.command.Light;
+import com.smartx.tank.mvpapplicationtest.command.LightCloseCommand;
+import com.smartx.tank.mvpapplicationtest.command.LightOpenCommand;
 import com.smartx.tank.mvpapplicationtest.decorate.ArmEquip;
 import com.smartx.tank.mvpapplicationtest.decorate.BlueJewelryEquip;
 import com.smartx.tank.mvpapplicationtest.decorate.IEquip;
@@ -20,6 +30,8 @@ import com.smartx.tank.mvpapplicationtest.single.EnumSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HoldSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HungrySingleType;
 import com.smartx.tank.mvpapplicationtest.single.LazySingleType;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements MessContract.TestView{
 
@@ -48,11 +60,28 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
+        //命令模式
+        Door door = new Door();
+        Light light = new Light();
+        Computer computer = new Computer();
+
+        ControlPanel controlPanel = new ControlPanel();
+        controlPanel.setCommand(0,new DoorOpenCommand(door));
+        controlPanel.setCommand(1,new DoorCloseCommand(door));
+        controlPanel.setCommand(2,new ComputerOpenCommand(computer));
+        controlPanel.setCommand(3,new ComputerCloseCommand(computer));
+        controlPanel.setCommand(4,new LightOpenCommand(light));
+        controlPanel.setCommand(5,new LightCloseCommand(light));
+
+        Random random = new Random();
+        int index = random.nextInt(6);
+        controlPanel.keyControl(index);
+
         //单例模式
-        LazySingleType instance = LazySingleType.getInstance();
-        HungrySingleType instance1 = HungrySingleType.getInstance();
-        EnumSingleType instance2 = EnumSingleType.INSTANCE;
-        HoldSingleType instance3 = HoldSingleType.getInstance();
+//        LazySingleType instance = LazySingleType.getInstance();
+//        HungrySingleType instance1 = HungrySingleType.getInstance();
+//        EnumSingleType instance2 = EnumSingleType.INSTANCE;
+//        HoldSingleType instance3 = HoldSingleType.getInstance();
 
         //工厂模式
 //        new JiangSuRouJiaMoFactory().createRouJiaMo();
