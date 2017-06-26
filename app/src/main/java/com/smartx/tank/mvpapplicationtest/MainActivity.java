@@ -4,6 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.smartx.tank.mvpapplicationtest.adapter.Mobile;
+import com.smartx.tank.mvpapplicationtest.adapter.PowerAdapter;
+import com.smartx.tank.mvpapplicationtest.adapter.V200Power;
+import com.smartx.tank.mvpapplicationtest.adapter.V5Power;
+import com.smartx.tank.mvpapplicationtest.appearance.OneKeyControl;
 import com.smartx.tank.mvpapplicationtest.command.Computer;
 import com.smartx.tank.mvpapplicationtest.command.ComputerCloseCommand;
 import com.smartx.tank.mvpapplicationtest.command.ComputerOpenCommand;
@@ -60,22 +65,37 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
+        //外观模式
+        com.smartx.tank.mvpapplicationtest.appearance.Computer computer = new com.smartx.tank.mvpapplicationtest.appearance.Computer();
+        com.smartx.tank.mvpapplicationtest.appearance.Light light = new com.smartx.tank.mvpapplicationtest.appearance.Light();
+        com.smartx.tank.mvpapplicationtest.appearance.Door door = new com.smartx.tank.mvpapplicationtest.appearance.Door();
+        OneKeyControl oneKeyControl = new OneKeyControl(computer,door,light);
+        oneKeyControl.openAll();
+        oneKeyControl.closeAll();
+
+
+        //适配器模式
+//        Mobile mobile = new Mobile();
+//        V5Power v5Power = new PowerAdapter(new V200Power());
+//        mobile.inputPower(v5Power);
+
+
         //命令模式
-        Door door = new Door();
-        Light light = new Light();
-        Computer computer = new Computer();
-
-        ControlPanel controlPanel = new ControlPanel();
-        controlPanel.setCommand(0,new DoorOpenCommand(door));
-        controlPanel.setCommand(1,new DoorCloseCommand(door));
-        controlPanel.setCommand(2,new ComputerOpenCommand(computer));
-        controlPanel.setCommand(3,new ComputerCloseCommand(computer));
-        controlPanel.setCommand(4,new LightOpenCommand(light));
-        controlPanel.setCommand(5,new LightCloseCommand(light));
-
-        Random random = new Random();
-        int index = random.nextInt(6);
-        controlPanel.keyControl(index);
+//        Door door = new Door();
+//        Light light = new Light();
+//        Computer computer = new Computer();
+//
+//        ControlPanel controlPanel = new ControlPanel();
+//        controlPanel.setCommand(0,new DoorOpenCommand(door));
+//        controlPanel.setCommand(1,new DoorCloseCommand(door));
+//        controlPanel.setCommand(2,new ComputerOpenCommand(computer));
+//        controlPanel.setCommand(3,new ComputerCloseCommand(computer));
+//        controlPanel.setCommand(4,new LightOpenCommand(light));
+//        controlPanel.setCommand(5,new LightCloseCommand(light));
+//
+//        Random random = new Random();
+//        int index = random.nextInt(6);
+//        controlPanel.keyControl(index);
 
         //单例模式
 //        LazySingleType instance = LazySingleType.getInstance();
