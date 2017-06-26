@@ -16,6 +16,10 @@ import com.smartx.tank.mvpapplicationtest.factory.simplefactory.RouJiaMoStore;
 import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
+import com.smartx.tank.mvpapplicationtest.single.EnumSingleType;
+import com.smartx.tank.mvpapplicationtest.single.HoldSingleType;
+import com.smartx.tank.mvpapplicationtest.single.HungrySingleType;
+import com.smartx.tank.mvpapplicationtest.single.LazySingleType;
 
 public class MainActivity extends AppCompatActivity implements MessContract.TestView{
 
@@ -44,13 +48,21 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
-        new JiangSuRouJiaMoFactory().createRouJiaMo();
+        //单例模式
+        LazySingleType instance = LazySingleType.getInstance();
+        HungrySingleType instance1 = HungrySingleType.getInstance();
+        EnumSingleType instance2 = EnumSingleType.INSTANCE;
+        HoldSingleType instance3 = HoldSingleType.getInstance();
+
+        //工厂模式
+//        new JiangSuRouJiaMoFactory().createRouJiaMo();
 //        JiangSuRouJiaMoStore jiangSuRouJiaMoStore = new JiangSuRouJiaMoStore();
 //        jiangSuRouJiaMoStore.sellRouJiaMo("la");
 
 //        RouJiaMoStore rouJiaMoStore = new RouJiaMoStore();
 //        rouJiaMoStore.sellRouJiaMo("jiangsu");
 
+        //装饰模式
 //        //镶嵌一颗红宝石，一颗蓝宝石，一颗黄宝石的武器
 //        IEquip equip = new RedJewelryEquip(new BlueJewelryEquip(new YellowJewelryEquip(new ArmEquip())));
 //        String description = equip.description();
@@ -58,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 //        Logger.d("攻击力-->"+attack);
 //        Logger.d("描述-->"+description);
 
+        //观察者模式
 //        SubjectAInJava subjectAInJava = new SubjectAInJava();
 //        SubjectBInJava subjectBInJava = new SubjectBInJava();
 //
@@ -70,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 //
 //        huaLi.sendMsg("你是个傻逼。。。。");
 
+        //策略模式
 //        BaseRole roleZega = new RoleZega("liuhuajian");
 //        roleZega.setAttackBehavior(new AttackExpend())
 //                .setDefendBehavior(new DefendZega())
@@ -80,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
 //        testPresenter.getData("wo ri ni da ye");
 
+        //状态模式
 //        VenderMachine machine = new VenderMachine(10);
 //        machine.insertMoney();
 //        machine.backMoney();
