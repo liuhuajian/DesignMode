@@ -31,6 +31,7 @@ import com.smartx.tank.mvpapplicationtest.factory.simplefactory.RouJiaMoStore;
 import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
+import com.smartx.tank.mvpapplicationtest.propotype.InstancePropo;
 import com.smartx.tank.mvpapplicationtest.single.EnumSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HoldSingleType;
 import com.smartx.tank.mvpapplicationtest.single.HungrySingleType;
@@ -69,13 +70,21 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
+        //原型模式
+        InstancePropo instancePropo = new InstancePropo();
+
+        for (int i=0;i<10;i++){
+           InstancePropo instancePropo1 = (InstancePropo) instancePropo.clone();
+            instancePropo1.show();
+        }
+
         //模板方法模式
-        Worker ITWorker = new ITWorker("liuhuajian");
-        ITWorker.workOneDay();
-        Worker hrWorker = new HRWorker("小婊砸");
-        hrWorker.workOneDay();
-        Worker proManWorker = new ProjectManWorker("tangor");
-        proManWorker.workOneDay();
+//        Worker ITWorker = new ITWorker("liuhuajian");
+//        ITWorker.workOneDay();
+//        Worker hrWorker = new HRWorker("小婊砸");
+//        hrWorker.workOneDay();
+//        Worker proManWorker = new ProjectManWorker("tangor");
+//        proManWorker.workOneDay();
 
 
         //外观模式
