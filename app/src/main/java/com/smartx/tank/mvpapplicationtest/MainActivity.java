@@ -28,6 +28,9 @@ import com.smartx.tank.mvpapplicationtest.decorate.YellowJewelryEquip;
 import com.smartx.tank.mvpapplicationtest.factory.abstractfactory.JiangSuRouJiaMoFactory;
 import com.smartx.tank.mvpapplicationtest.factory.officalfactory.JiangSuRouJiaMoStore;
 import com.smartx.tank.mvpapplicationtest.factory.simplefactory.RouJiaMoStore;
+import com.smartx.tank.mvpapplicationtest.mediator.CollectionA;
+import com.smartx.tank.mvpapplicationtest.mediator.CollectionB;
+import com.smartx.tank.mvpapplicationtest.mediator.Mediator;
 import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
 import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
@@ -70,13 +73,25 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
-        //原型模式
-        InstancePropo instancePropo = new InstancePropo();
+        //中介者模式
+        CollectionA collectionA = new CollectionA();
+        CollectionB collectionB = new CollectionB();
+        Mediator mediator = new Mediator(collectionA ,collectionB);
+        collectionA.setNumber(100,mediator);
 
-        for (int i=0;i<10;i++){
-           InstancePropo instancePropo1 = (InstancePropo) instancePropo.clone();
-            instancePropo1.show();
-        }
+        Logger.d("CollectionA:"+collectionA.getNumber());
+        Logger.d("CollectionB:"+collectionB.getNumber());
+        collectionB.setNumber(200,mediator);
+        Logger.d("CollectionA:"+collectionA.getNumber());
+        Logger.d("CollectionB:"+collectionB.getNumber());
+
+        //原型模式
+//        InstancePropo instancePropo = new InstancePropo();
+//
+//        for (int i=0;i<10;i++){
+//           InstancePropo instancePropo1 = (InstancePropo) instancePropo.clone();
+//            instancePropo1.show();
+//        }
 
         //模板方法模式
 //        Worker ITWorker = new ITWorker("liuhuajian");
