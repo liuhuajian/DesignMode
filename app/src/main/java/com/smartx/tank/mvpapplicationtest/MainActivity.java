@@ -4,47 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.smartx.tank.mvpapplicationtest.adapter.Mobile;
-import com.smartx.tank.mvpapplicationtest.adapter.PowerAdapter;
-import com.smartx.tank.mvpapplicationtest.adapter.V200Power;
-import com.smartx.tank.mvpapplicationtest.adapter.V5Power;
-import com.smartx.tank.mvpapplicationtest.appearance.OneKeyControl;
-import com.smartx.tank.mvpapplicationtest.command.Computer;
-import com.smartx.tank.mvpapplicationtest.command.ComputerCloseCommand;
-import com.smartx.tank.mvpapplicationtest.command.ComputerOpenCommand;
-import com.smartx.tank.mvpapplicationtest.command.ControlPanel;
-import com.smartx.tank.mvpapplicationtest.command.Door;
-import com.smartx.tank.mvpapplicationtest.command.DoorCloseCommand;
-import com.smartx.tank.mvpapplicationtest.command.DoorOpenCommand;
-import com.smartx.tank.mvpapplicationtest.command.Light;
-import com.smartx.tank.mvpapplicationtest.command.LightCloseCommand;
-import com.smartx.tank.mvpapplicationtest.command.LightOpenCommand;
-import com.smartx.tank.mvpapplicationtest.decorate.ArmEquip;
-import com.smartx.tank.mvpapplicationtest.decorate.BlueJewelryEquip;
-import com.smartx.tank.mvpapplicationtest.decorate.IEquip;
-import com.smartx.tank.mvpapplicationtest.decorate.RedJewelryEquip;
-import com.smartx.tank.mvpapplicationtest.decorate.ShoeEquip;
-import com.smartx.tank.mvpapplicationtest.decorate.YellowJewelryEquip;
-import com.smartx.tank.mvpapplicationtest.factory.abstractfactory.JiangSuRouJiaMoFactory;
-import com.smartx.tank.mvpapplicationtest.factory.officalfactory.JiangSuRouJiaMoStore;
-import com.smartx.tank.mvpapplicationtest.factory.simplefactory.RouJiaMoStore;
-import com.smartx.tank.mvpapplicationtest.mediator.CollectionA;
-import com.smartx.tank.mvpapplicationtest.mediator.CollectionB;
-import com.smartx.tank.mvpapplicationtest.mediator.Mediator;
-import com.smartx.tank.mvpapplicationtest.observer.injava.ObserverInJava;
-import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectAInJava;
-import com.smartx.tank.mvpapplicationtest.observer.injava.SubjectBInJava;
-import com.smartx.tank.mvpapplicationtest.propotype.InstancePropo;
-import com.smartx.tank.mvpapplicationtest.single.EnumSingleType;
-import com.smartx.tank.mvpapplicationtest.single.HoldSingleType;
-import com.smartx.tank.mvpapplicationtest.single.HungrySingleType;
-import com.smartx.tank.mvpapplicationtest.single.LazySingleType;
-import com.smartx.tank.mvpapplicationtest.template.HRWorker;
-import com.smartx.tank.mvpapplicationtest.template.ITWorker;
-import com.smartx.tank.mvpapplicationtest.template.ProjectManWorker;
-import com.smartx.tank.mvpapplicationtest.template.Worker;
+import com.smartx.tank.mvpapplicationtest.command.type2.FirstCommand;
+import com.smartx.tank.mvpapplicationtest.command.type2.Invoker;
+import com.smartx.tank.mvpapplicationtest.command.type2.Receiver;
+import com.smartx.tank.mvpapplicationtest.visitor.Element;
+import com.smartx.tank.mvpapplicationtest.visitor.ObjectStruture;
+import com.smartx.tank.mvpapplicationtest.visitor.Visitor;
 
-import java.util.Random;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MessContract.TestView{
 
@@ -73,17 +40,23 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 
     public void btnTest2(View view) {
 
-        //中介者模式
-        CollectionA collectionA = new CollectionA();
-        CollectionB collectionB = new CollectionB();
-        Mediator mediator = new Mediator(collectionA ,collectionB);
-        collectionA.setNumber(100,mediator);
+        //访问者模式
+//        List<Element> elements = ObjectStruture.getList();
+//        for (Element element:elements){
+//            element.accept(new Visitor());
+//        }
 
-        Logger.d("CollectionA:"+collectionA.getNumber());
-        Logger.d("CollectionB:"+collectionB.getNumber());
-        collectionB.setNumber(200,mediator);
-        Logger.d("CollectionA:"+collectionA.getNumber());
-        Logger.d("CollectionB:"+collectionB.getNumber());
+        //中介者模式
+//        CollectionA collectionA = new CollectionA();
+//        CollectionB collectionB = new CollectionB();
+//        Mediator mediator = new Mediator(collectionA ,collectionB);
+//        collectionA.setNumber(100,mediator);
+//
+//        Logger.d("CollectionA:"+collectionA.getNumber());
+//        Logger.d("CollectionB:"+collectionB.getNumber());
+//        collectionB.setNumber(200,mediator);
+//        Logger.d("CollectionA:"+collectionA.getNumber());
+//        Logger.d("CollectionB:"+collectionB.getNumber());
 
         //原型模式
 //        InstancePropo instancePropo = new InstancePropo();
@@ -117,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 //        mobile.inputPower(v5Power);
 
 
-        //命令模式
+        //命令模式类型1
 //        Door door = new Door();
 //        Light light = new Light();
 //        Computer computer = new Computer();
@@ -133,6 +106,13 @@ public class MainActivity extends AppCompatActivity implements MessContract.Test
 //        Random random = new Random();
 //        int index = random.nextInt(6);
 //        controlPanel.keyControl(index);
+
+        //命令模式类型2
+//        Receiver receiver = new Receiver();
+//        FirstCommand command = new FirstCommand(receiver);
+//        Invoker invoker = new Invoker(command);
+//        invoker.execute();
+//        invoker.cancel();
 
         //单例模式
 //        LazySingleType instance = LazySingleType.getInstance();

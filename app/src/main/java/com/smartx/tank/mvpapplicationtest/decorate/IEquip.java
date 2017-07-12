@@ -1,6 +1,7 @@
 package com.smartx.tank.mvpapplicationtest.decorate;
 
 /**
+ * 装饰模式
  * Created by messi on 17/6/23.
  */
 

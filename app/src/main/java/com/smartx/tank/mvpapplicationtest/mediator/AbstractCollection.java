@@ -1,6 +1,7 @@
 package com.smartx.tank.mvpapplicationtest.mediator;
 
 /**
+ * 中介者模式
  * Created by messi on 17/7/10.
  */
 

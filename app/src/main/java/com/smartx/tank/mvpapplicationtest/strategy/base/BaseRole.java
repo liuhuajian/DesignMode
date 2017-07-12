@@ -3,6 +3,7 @@ package com.smartx.tank.mvpapplicationtest.strategy.base;
 import com.smartx.tank.mvpapplicationtest.Logger;
 
 /**
+ * 策略模式
  * Created by messi on 17/6/22.
  */
 

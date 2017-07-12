@@ -1,4 +1,4 @@
-package com.smartx.tank.mvpapplicationtest.command;
+package com.smartx.tank.mvpapplicationtest.command.type1;
 
 import com.smartx.tank.mvpapplicationtest.Logger;
 

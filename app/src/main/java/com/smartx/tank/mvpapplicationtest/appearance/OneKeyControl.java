@@ -1,6 +1,7 @@
 package com.smartx.tank.mvpapplicationtest.appearance;
 
 /**
+ * 外观模式
  * Created by messi on 17/6/26.
  */
 

@@ -3,6 +3,7 @@ package com.smartx.tank.mvpapplicationtest.template;
 import com.smartx.tank.mvpapplicationtest.Logger;
 
 /**
+ * 模板方法模式
  * Created by messi on 17/6/26.
  */
 

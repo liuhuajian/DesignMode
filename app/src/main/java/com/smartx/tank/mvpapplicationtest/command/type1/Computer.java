@@ -1,4 +1,4 @@
-package com.smartx.tank.mvpapplicationtest.command;
+package com.smartx.tank.mvpapplicationtest.command.type1;
 
 import com.smartx.tank.mvpapplicationtest.Logger;
 
@@ -6,12 +6,12 @@ import com.smartx.tank.mvpapplicationtest.Logger;
  * Created by messi on 17/6/26.
  */
 
-public class Door {
+public class Computer {
     public void open(){
-        Logger.d("开门");
+        Logger.d("开电脑");
     }
 
     public void close(){
-        Logger.d("关门");
+        Logger.d("关电脑");
     }
 }
